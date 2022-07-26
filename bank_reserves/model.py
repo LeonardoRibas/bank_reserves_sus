@@ -112,6 +112,7 @@ class BankReserves(mesa.Model):
         init_people=2,
         rich_threshold=10,
         reserve_percent=50,
+        suspicion=50,
     ):
         self.height = height
         self.width = width

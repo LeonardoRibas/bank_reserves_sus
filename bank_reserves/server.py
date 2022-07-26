@@ -67,6 +67,13 @@ model_params = {
         100,
         description="Percent of deposits the bank has to hold in reserve",
     ),
+    "suspicion": mesa.visualization.Slider(
+        "Suspicion",
+        50,
+        1,
+        100,
+        description="Percent of people`s suspicion on the bank institution",
+    ),
 }
 
 # set the portrayal function and size of the canvas for visualization
