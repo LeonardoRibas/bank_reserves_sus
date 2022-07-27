@@ -181,10 +181,10 @@ class BankReservesModel(mesa.Model):
 
 # parameter lists for each parameter to be tested in batch run
 br_params = {
-    "init_people": [25, 100],
-    "rich_threshold": [5, 10],
+    "init_people": 100,
+    "rich_threshold": 10,
     "reserve_percent": 5,
-    "suspicion": [0, 25, 50, 75, 100]
+    "suspicion": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 }
 
 if __name__ == "__main__":
