@@ -29,5 +29,16 @@ Quanto maior o nível de desconfiança, menores são as chances de serem efetuad
 
 ## Motivação e Hipótese Causal
 
+A ideia por trás da variável independente proposta é de adicionar um fator historicamente relevenate: a desconfiança no banco como instituição segura e estável.
+
+Como visto acima, espera-se que, a medida em que essa desconfiança aumenta menos dinheiro será depositado no banco. isso, por consequência afetará diretamente as quantidade de dinheiro que o banco aramazenará em suas reservas, que por sua vez, limitará a disponibilidade de empréstimos, acarrentando em um número menor de empréstimos e de dinheiro gerado no sistema
+
 
 ## Análise dos Dados
+
+Ao alterar o fator "suspicion" nos seguintes valores: 0% -> 50% -> 100%. Foi possível observar consequências diretas nas variáveis dependentes:
+
+- Savings (dinheiro total guardado por toda população): Quanto maior o valor de suspicion menor é a quantidade de dinheiro guardado pela população
+- Wallets (dinheiro total disponível na carteira de toda população): Quanto maior o valor de suspicion maior é o valor de dinehiro guardado na carteira das população
+- Money (dinheiro total, savings + wallets): Quanto maior o valor de suspicion, o dinheiro gerado pelo sistema tende a ser menor
+
