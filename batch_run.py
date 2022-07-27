@@ -123,6 +123,7 @@ class BankReservesModel(mesa.Model):
         init_people=2,
         rich_threshold=10,
         reserve_percent=50,
+        suspicion=50
     ):
         self.uid = next(self.id_gen)
         self.height = height
@@ -133,6 +134,7 @@ class BankReservesModel(mesa.Model):
         # rich_threshold is the amount of savings a person needs to be considered "rich"
         self.rich_threshold = rich_threshold
         self.reserve_percent = reserve_percent
+        self.suspicion = suspicion
         # see datacollector functions above
         self.datacollector = mesa.DataCollector(
             model_reporters={
@@ -158,7 +160,7 @@ class BankReservesModel(mesa.Model):
             x = self.random.randrange(self.width)
             # set y coordinate as a random number within the height of the grid
             y = self.random.randrange(self.height)
-            p = Person(i, (x, y), self, True, self.bank, self.rich_threshold)
+            p = Person(i, (x, y), self, True, self.bank, self.rich_threshold, self.suspicion)
             # place the Person object on the grid at coordinates (x, y)
             self.grid.place_agent(p, (x, y))
             # add the Person object to the model schedule
@@ -182,6 +184,7 @@ br_params = {
     "init_people": [25, 100],
     "rich_threshold": [5, 10],
     "reserve_percent": 5,
+    "suspicion": [0, 25, 50, 75, 100]
 }
 
 if __name__ == "__main__":

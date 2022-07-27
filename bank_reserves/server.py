@@ -19,6 +19,13 @@ POOR_COLOR = "#d62728"
 # Blue
 MID_COLOR = "#1f77b4"
 
+SAVINGS_COLOR = "#0051d4"
+
+MONEY_COLOR = "#ffff00"
+
+LOANS_COLOR = "#ff0000"
+
+
 
 def person_portrayal(agent):
     if agent is None:
@@ -80,7 +87,7 @@ model_params = {
 canvas_element = mesa.visualization.CanvasGrid(person_portrayal, 20, 20, 500, 500)
 
 # map data to chart in the ChartModule
-chart_element = mesa.visualization.ChartModule(
+chart_element1 = mesa.visualization.ChartModule(
     [
         {"Label": "Rich", "Color": RICH_COLOR},
         {"Label": "Poor", "Color": POOR_COLOR},
@@ -88,10 +95,18 @@ chart_element = mesa.visualization.ChartModule(
     ]
 )
 
+chart_element2 = mesa.visualization.ChartModule(
+    [
+        {"Label": "Savings", "Color": SAVINGS_COLOR},
+        {"Label": "Money", "Color": MONEY_COLOR},
+        {"Label": "Loans", "Color": LOANS_COLOR},
+        
+    ]
+)
 # create instance of Mesa ModularServer
 server = mesa.visualization.ModularServer(
     BankReserves,
-    [canvas_element, chart_element],
+    [canvas_element, chart_element1, chart_element2],
     "Bank Reserves Model",
     model_params=model_params,
 )

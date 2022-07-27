@@ -10,6 +10,7 @@ Author of NetLogo code:
 """
 
 import mesa
+from math import floor
 
 from bank_reserves.random_walk import RandomWalker
 
@@ -41,7 +42,7 @@ class Bank(mesa.Agent):
 
 # subclass of RandomWalker, which is subclass to Mesa Agent
 class Person(RandomWalker):
-    def __init__(self, unique_id, pos, model, moore, bank, rich_threshold):
+    def __init__(self, unique_id, pos, model, moore, bank, rich_threshold, suspicion):
         # init parent class with required parameters
         super().__init__(unique_id, pos, model, moore=moore)
         # the amount each person has in savings
@@ -57,6 +58,7 @@ class Person(RandomWalker):
         self.customer = 0
         # person's bank, set at __init__, all people have the same bank in this model
         self.bank = bank
+        self.suspicion = suspicion
 
     def do_business(self):
         """check if person has any savings, any money in wallet, or if the
@@ -117,7 +119,7 @@ class Person(RandomWalker):
         else:
             """if i have money in my wallet from trading with customer, deposit
             it to my savings in the bank"""
-            self.deposit_to_savings(self.wallet)
+            self.deposit_to_savings(floor(self.wallet * ((100 - self.suspicion) / 100)))
         # check if i have any outstanding loans, and if i have savings
         if self.loans > 0 and self.savings > 0:
             # check if my savings can cover my outstanding loans

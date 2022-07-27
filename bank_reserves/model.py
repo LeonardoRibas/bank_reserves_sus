@@ -52,7 +52,7 @@ def get_total_savings(model):
 
     agent_savings = [a.savings for a in model.schedule.agents]
     # return the sum of agents' savings
-    return np.sum(agent_savings)
+    return int(np.sum(agent_savings))
 
 
 def get_total_wallets(model):
@@ -60,7 +60,7 @@ def get_total_wallets(model):
 
     agent_wallets = [a.wallet for a in model.schedule.agents]
     # return the sum of all agents' wallets
-    return np.sum(agent_wallets)
+    return int(np.sum(agent_wallets))
 
 
 def get_total_money(model):
@@ -76,7 +76,7 @@ def get_total_loans(model):
     # list of amounts of all agents' loans
     agent_loans = [a.loans for a in model.schedule.agents]
     # return sum of all agents' loans
-    return np.sum(agent_loans)
+    return int(np.sum(agent_loans))
 
 
 class BankReserves(mesa.Model):
@@ -122,6 +122,7 @@ class BankReserves(mesa.Model):
         # rich_threshold is the amount of savings a person needs to be considered "rich"
         self.rich_threshold = rich_threshold
         self.reserve_percent = reserve_percent
+        self.suspicion = suspicion
         # see datacollector functions above
         self.datacollector = mesa.DataCollector(
             model_reporters={
@@ -144,7 +145,7 @@ class BankReserves(mesa.Model):
             # set x, y coords randomly within the grid
             x = self.random.randrange(self.width)
             y = self.random.randrange(self.height)
-            p = Person(i, (x, y), self, True, self.bank, self.rich_threshold)
+            p = Person(i, (x, y), self, True, self.bank, self.rich_threshold, self.suspicion)
             # place the Person object on the grid at coordinates (x, y)
             self.grid.place_agent(p, (x, y))
             # add the Person object to the model schedule
