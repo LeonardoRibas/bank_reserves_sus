@@ -19,12 +19,17 @@ POOR_COLOR = "#d62728"
 # Blue
 MID_COLOR = "#1f77b4"
 
+RESERVES_COLOR = "#000000"
+
+DEBTS_COLOR = "#cccccc"
+
 SAVINGS_COLOR = "#0051d4"
 
 MONEY_COLOR = "#ffff00"
 
 LOANS_COLOR = "#ff0000"
 
+WALLETS_COLOR = "#00b612"
 
 
 def person_portrayal(agent):
@@ -76,9 +81,9 @@ model_params = {
     ),
     "suspicion": mesa.visualization.Slider(
         "Suspicion",
-        50,
-        1,
-        100,
+        0,
+        0,
+        10,
         description="Percent of people`s suspicion on the bank institution",
     ),
 }
@@ -97,9 +102,11 @@ chart_element1 = mesa.visualization.ChartModule(
 
 chart_element2 = mesa.visualization.ChartModule(
     [
+        {"Label": "Reserves", "Color": RESERVES_COLOR},
         {"Label": "Savings", "Color": SAVINGS_COLOR},
         {"Label": "Money", "Color": MONEY_COLOR},
-        {"Label": "Loans", "Color": LOANS_COLOR},
+        {"Label": "Debts", "Color": DEBTS_COLOR},
+        {"Label": "Wallets", "Color": WALLETS_COLOR},
         
     ]
 )

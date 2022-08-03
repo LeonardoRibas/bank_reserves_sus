@@ -78,6 +78,14 @@ def get_total_loans(model):
     # return sum of all agents' loans
     return int(np.sum(agent_loans))
 
+def get_total_reserves(model):
+    savings = get_total_savings(model)
+    reserve_percent = model.schedule.agents[0].bank.reserve_percent
+    return (reserve_percent / 100) * savings
+
+def get_total_debts(model):
+    agent_debts = [a.debts for a in model.schedule.agents]
+    return int(np.sum(agent_debts))
 
 class BankReserves(mesa.Model):
     """
@@ -133,6 +141,8 @@ class BankReserves(mesa.Model):
                 "Wallets": get_total_wallets,
                 "Money": get_total_money,
                 "Loans": get_total_loans,
+                "Reserves": get_total_reserves,
+                "Debts": get_total_debts
             },
             agent_reporters={"Wealth": lambda x: x.wealth},
         )

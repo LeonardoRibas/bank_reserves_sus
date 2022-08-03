@@ -59,6 +59,7 @@ class Person(RandomWalker):
         # person's bank, set at __init__, all people have the same bank in this model
         self.bank = bank
         self.suspicion = suspicion
+        self.debts = 0
 
     def do_business(self):
         """check if person has any savings, any money in wallet, or if the
@@ -115,11 +116,12 @@ class Person(RandomWalker):
                     """if the bank cannot loan enough money to cover the negative
                     balance of my wallet, then take out a loan for the
                     total amount the bank can loan right now"""
+                    self.debts += 1
                     self.take_out_loan(temp_loan)
         else:
             """if i have money in my wallet from trading with customer, deposit
             it to my savings in the bank"""
-            self.deposit_to_savings(floor(self.wallet * ((100 - self.suspicion) / 100)))
+            self.deposit_to_savings(floor(self.wallet * ((10 - self.suspicion) / 10)))
         # check if i have any outstanding loans, and if i have savings
         if self.loans > 0 and self.savings > 0:
             # check if my savings can cover my outstanding loans
