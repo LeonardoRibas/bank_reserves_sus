@@ -10,21 +10,21 @@ O modelo proposto difere-se do original com a adcição uma nova fator. A variá
 
 Quanto maior o nível de desconfiança, menores são as chances de serem efetuados depositos no banco principal.
 
-- As chances de deposito no banco principal de um saldo positivo após uma troca serão diminuidas proporcionalmente em relação ao fator "suspicion" seguindo a regra da tabela
+- Os valores de deposito no banco principal de um saldo positivo após uma troca serão diminuidos proporcionalmente em relação ao fator "suspicion" seguindo a regra da tabela
 
-| Suspicion | Chances de depósito pós saldo positivo |
-| --------- | :------------------------------------: |
-| 0%        |                  100%                  |
-| 10%       |                  90%                   |
-| 20%       |                  80%                   |
-| 30%       |                  70%                   |
-| 40%       |                  60%                   |
-| 50%       |                  50%                   |
-| 60%       |                  40%                   |
-| 70%       |                  30%                   |
-| 80%       |                  20%                   |
-| 90%       |                  10%                   |
-| 100%      |                   0%                   |
+| Suspicion | Multiplicador do saldo positivo que será dopositado |
+| --------- | :-------------------------------------------------: |
+| 0         |                          1                          |
+| 0.1       |                         0.9                         |
+| 0.2       |                         0.8                         |
+| 0.3       |                         0.7                         |
+| 0.4       |                         0.6                         |
+| 0.5       |                         0.5                         |
+| 0.6       |                         0.4                         |
+| 0.7       |                         0.3                         |
+| 0.8       |                         0.2                         |
+| 0.9       |                         0.1                         |
+| 1         |                          0                          |
 
 Além da variável independente 'suspicion', foi introduzida outras duas variáveis (dependentes) ao modelo que serão análisadas: a reserva total do banco (reserves) e a quantidade total de dívidas (debts) geradas pelas transações economicas. Essas dívidas ocorrem quando as seguintes condições acontecem simultaneamente:
 
