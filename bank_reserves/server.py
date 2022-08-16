@@ -83,7 +83,8 @@ model_params = {
         "Suspicion",
         0,
         0,
-        10,
+        1,
+        0.1,
         description="Percent of people`s suspicion on the bank institution",
     ),
 }
