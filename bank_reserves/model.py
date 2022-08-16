@@ -144,7 +144,6 @@ class BankReserves(mesa.Model):
                 "Reserves": get_total_reserves,
                 "Debts": get_total_debts
             },
-            agent_reporters={"Wealth": lambda x: x.wealth},
         )
 
         # create a single bank for the model
