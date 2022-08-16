@@ -58,7 +58,9 @@ class Person(RandomWalker):
         self.customer = 0
         # person's bank, set at __init__, all people have the same bank in this model
         self.bank = bank
+        # independet variable added for suspicion factor
         self.suspicion = suspicion
+        # person's number of acumulated debts
         self.debts = 0
 
     def do_business(self):
@@ -121,7 +123,7 @@ class Person(RandomWalker):
         else:
             """if i have money in my wallet from trading with customer, deposit
             it to my savings in the bank"""
-            self.deposit_to_savings(floor(self.wallet * ((10 - self.suspicion) / 10)))
+            self.deposit_to_savings(floor(self.wallet * ((1 - self.suspicion))))
         # check if i have any outstanding loans, and if i have savings
         if self.loans > 0 and self.savings > 0:
             # check if my savings can cover my outstanding loans
