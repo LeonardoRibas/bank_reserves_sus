@@ -95,9 +95,16 @@ def get_total_loans(model):
     # return sum of all agents' loans
     return np.sum(agent_loans)
 
+def get_total_debts(model):
+    """list of amounts of all agents' debts"""
+
+    agent_debts = [a.debts for a in model.schedule.agents]
+    # return sum of all agents' debts
+    return int(np.sum(agent_debts))
+
 
 def track_params(model):
-    return (model.init_people, model.rich_threshold, model.reserve_percent)
+    return (model.init_people, model.rich_threshold, model.reserve_percent, model.suspicion)
 
 
 def track_run(model):
@@ -138,14 +145,15 @@ class BankReservesModel(mesa.Model):
         # see datacollector functions above
         self.datacollector = mesa.DataCollector(
             model_reporters={
-                "Rich": get_num_rich_agents,
-                "Poor": get_num_poor_agents,
-                "Middle Class": get_num_mid_agents,
+                "Model Params": track_params,
+                # "Rich": get_num_rich_agents,
+                # "Poor": get_num_poor_agents,
+                # "Middle Class": get_num_mid_agents,
                 "Savings": get_total_savings,
                 "Wallets": get_total_wallets,
                 "Money": get_total_money,
                 "Loans": get_total_loans,
-                "Model Params": track_params,
+                "Debts": get_total_debts,
                 "Run": track_run,
             },
             agent_reporters={"Wealth": "wealth"},
@@ -182,9 +190,9 @@ class BankReservesModel(mesa.Model):
 # parameter lists for each parameter to be tested in batch run
 br_params = {
     "init_people": 100,
-    "rich_threshold": 10,
-    "reserve_percent": 5,
-    "suspicion": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    "rich_threshold": 20,
+    "reserve_percent": 50,
+    "suspicion": [0, 0.2, 0.4, 0.6, 0.8, 1]
 }
 
 if __name__ == "__main__":
