@@ -1,0 +1,7 @@
+Foram utilizados dois scripts para a geração dos gráficos:
+
+hist(dataset$variable)
+plot(dataset$x_variable, dataset$y_variable)
+
+variable = variável que se deseja observar.
+Exemplo: hist(dataset$Money) cria o gráfico de frequencias da variável Money do modelo.
