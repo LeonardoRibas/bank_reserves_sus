@@ -30,12 +30,12 @@ import pandas as pd
 from datetime import datetime
 from bank_reserves.model import BankReserves
 
-max_steps_per_simulation=100
-iterations_per_parameter=10
+max_steps_per_simulation=500
+iterations_per_parameter=100
 
 # parameter lists for each parameter to be tested in batch run
 br_params = {
-    "init_people": 200,
+    "init_people": 100,
     "rich_threshold": 20,
     "reserve_percent": 50,
     "suspicion": np.arange(0, 1, 0.1)
